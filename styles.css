@@ -167,9 +167,11 @@ body {
     border-right: 1px solid #d0d0d0;
 }
 
-.mood-area h3 {
+.mood-area h3,
+.journal-prompt h3 {
     text-align: center;
     font-weight: 300;
+    margin-top: 0;
     margin-bottom: 25px;
 }
 
@@ -221,7 +223,6 @@ body {
     padding-left: 35px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .prompt {
@@ -421,7 +422,123 @@ button:hover {
     font-size: 1.1rem;
     line-height: 1.8;
 }
+/* ---------- Challenge Tracker ---------- */
 
+.challenge-progress {
+    max-width: 500px;
+    margin: 30px auto 40px;
+    text-align: center;
+}
+
+.challenge-progress p {
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.progress-track {
+    width: 100%;
+    height: 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+.progress-fill {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: #333;
+    transition: width .3s ease;
+}
+
+/* ---------- Challenge Toggle ---------- */
+
+.care-card input {
+    display: none;
+}
+
+.challenge-toggle {
+    display: inline-block;
+    padding: 6px 14px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+
+    font-size: .9rem;
+    margin-bottom: 20px;
+}
+
+.care-card input:checked + .challenge-toggle {
+    background: #eee;
+    border-color: #777;
+}
+
+.care-card input:checked ~ h2,
+.care-card input:checked ~ p {
+    opacity: .75;
+}
+
+.care-card:has(input:checked) {
+    border-color: #777;
+    background: #fafafa;
+}
+
+/*--------- Progress Bar --------------*/
+.self-care-container:has(#body-check:checked) .progress-fill {
+    width: 25%;
+}
+
+.self-care-container:has(#mind-check:checked) .progress-fill {
+    width: 25%;
+}
+
+.self-care-container:has(#social-check:checked) .progress-fill {
+    width: 25%;
+}
+
+.self-care-container:has(#environment-check:checked) .progress-fill {
+    width: 25%;
+}
+
+
+.self-care-container:has(#body-check:checked):has(#mind-check:checked) .progress-fill {
+    width: 50%;
+}
+.self-care-container:has(#body-check:checked):has(#social-check:checked) .progress-fill {
+    width: 50%;
+}
+.self-care-container:has(#body-check:checked):has(#environment-check:checked) .progress-fill {
+    width: 50%;
+}
+.self-care-container:has(#environment-check:checked):has(#mind-check:checked) .progress-fill {
+    width: 50%;
+}
+.self-care-container:has(#social-check:checked):has(#mind-check:checked) .progress-fill {
+    width: 50%;
+}
+.self-care-container:has(#social-check:checked):has(#environment-check:checked) .progress-fill {
+    width: 50%;
+}
+
+
+.self-care-container:has(#body-check:checked):has(#mind-check:checked):has(#social-check:checked) .progress-fill {
+    width: 75%;
+}
+.self-care-container:has(#body-check:checked):has(#mind-check:checked):has(#environment-check:checked) .progress-fill {
+    width: 75%;
+}
+.self-care-container:has(#body-check:checked):has(#environment-check:checked):has(#social-check:checked) .progress-fill {
+    width: 75%;
+}
+.self-care-container:has(#environment-check:checked):has(#mind-check:checked):has(#social-check:checked) .progress-fill {
+    width: 75%;
+}
+
+
+
+.self-care-container:has(#body-check:checked):has(#mind-check:checked):has(#social-check:checked):has(#environment-check:checked) .progress-fill {
+    width: 100%;
+}
 
 /* ---------- -------------- ---------- */
 /* ---------- -------------- ---------- */
@@ -603,7 +720,7 @@ button:hover {
     display:grid;
     grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
     gap:50px;
-    align-items:center;
+    align-items:stretch;
     margin-bottom:60px;
 }
 

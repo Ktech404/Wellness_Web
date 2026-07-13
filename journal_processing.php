@@ -10,10 +10,10 @@ include './includes/nav.php';
 
 <div class="hero-section">
 
-    <h1>Journal Saved</h1>
+    <h1> - Journal Saved - </h1>
 
     <p>
-        We logged your journal entry successfully.
+        Thank you for taking time to reflect today. Head back to the main page to make another reflection, or explore other resouces in the navigation bar!
     </p>
 
 </div>
@@ -30,7 +30,7 @@ include './includes/nav.php';
 
 <div class="insight-card">
 
-    <h2>Feedback</h2>
+    <h2>Feedback: </h2>
 
     <p>
         <?= htmlspecialchars(moodMessage()); ?>

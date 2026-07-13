@@ -4,16 +4,16 @@ $selfCare = [
 
     "body" => [
         "Take a short walk and focus on your surroundings.",
-        "Drink a glass of water and give your body what it needs.",
+        "Drink a glass of water eat something comforting.",
         "Stretch for five minutes and release tension.",
         "Get enough rest tonight to help your body recover."
     ],
 
     "mind" => [
         "Write down one thought that has been on your mind.",
-        "Take a few minutes to practice mindfulness.",
-        "Read something that inspires you.",
-        "Allow yourself a moment without distractions."
+        "Reflect on 5 things you're grateful for.",
+        "Read or watch your favorite book or movie",
+        "Take an hour break from devices.."
     ],
 
     "social" => [
@@ -26,7 +26,7 @@ $selfCare = [
     "environment" => [
         "Clean one small area of your space.",
         "Open a window and let fresh air into your room.",
-        "Create a calming space around you.",
+        "Create a calming space with lighting and music.",
         "Remove one thing from your environment that causes stress."
     ]
 
@@ -53,21 +53,36 @@ include './includes/nav.php';
     </h1>
     
     <p class="page-desc">
-        This page provides a random self-care suggestion from four different
+        Here are self-care suggestions from four different
         categories: Body, Mind, Social, and Environment.
+        Try to complete 1 from each every day!
         Click "New Tips" below at any time to generate a fresh set of tips.
     </p>
 
     <button
-        class="refresh-btn"
-        onclick="window.location.reload();">
-        New Tips
-    </button>   
+    class="refresh-btn"
+    onclick="window.location.reload();">
+    New Tips
+    </button>
+
+    <div class="challenge-progress">
+        <p>Today's Progress</p>
+
+        <div class="progress-track">
+            <div class="progress-fill"></div>
+        </div>
+    </div>   
 
     <div class="self-care-grid">
 
 
         <div class="care-card">
+            <input type="checkbox" id="body-check">
+
+            <label for="body-check" class="challenge-toggle">
+                Complete
+            </label>
+
             <h2>Body</h2>
             <p>
                 <?= $selectedCare["body"]; ?>
@@ -76,6 +91,12 @@ include './includes/nav.php';
 
 
         <div class="care-card">
+            <input type="checkbox" id="mind-check">
+
+            <label for="mind-check" class="challenge-toggle">
+                Complete
+            </label>
+
             <h2>Mind</h2>
             <p>
                 <?= $selectedCare["mind"]; ?>
@@ -84,6 +105,12 @@ include './includes/nav.php';
 
 
         <div class="care-card">
+            <input type="checkbox" id="social-check">
+
+            <label for="social-check" class="challenge-toggle">
+                Complete
+            </label>
+
             <h2>Social</h2>
             <p>
                 <?= $selectedCare["social"]; ?>
@@ -92,6 +119,12 @@ include './includes/nav.php';
 
 
         <div class="care-card">
+            <input type="checkbox" id="environment-check">
+           
+            <label for="environment-check" class="challenge-toggle">
+                Complete
+            </label>
+
             <h2>Environment</h2>
             <p>
                 <?= $selectedCare["environment"]; ?>

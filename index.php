@@ -2,6 +2,21 @@
 
 require "./journal_functions.php";
 
+$journalPrompts = [
+    "What is one thing you learned about yourself today?",
+    "What is something small that brought you joy today?",
+    "What is one challenge you faced recently, and how did you handle it?",
+    "What is something you are grateful for today?",
+    "What is one thing you would like to improve about tomorrow?",
+    "Describe a moment today when you felt calm or peaceful.",
+    "What is something you are proud of yourself for?",
+    "What is one thought that has been on your mind lately?",
+    "What is something you would like to let go of?",
+    "What is one positive thing you can say about yourself today?"
+];
+
+$dailyPrompt = $journalPrompts[array_rand($journalPrompts)];
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     saveJournalEntry();
 }
@@ -19,8 +34,13 @@ include './includes/nav.php';
 
 <div class="hero-section">
     <div class="hero-text">
-        <h1>Welcome!</h1>
-        <p>Your personal reflection space.</p>
+        <h1>Welcome to the Wellness Web!</h1>
+        <p>This is your personal reflection space to:
+            -Record your thoughts and feelings
+            -Get self-care tips
+            -Practice calming breathing exercises
+            -And explore additional resouces, all in one place!
+        </p>
     </div>
 
     <div class="hero-image">
@@ -141,8 +161,9 @@ include './includes/nav.php';
             </div>
 
             <div class="journal-prompt">
+                <h3>Daily Prompt:</h3>
                 <p class="prompt">
-                    What is one thing you learned about yourself today?
+                    <?= htmlspecialchars($dailyPrompt); ?>
                 </p>
             </div>
 

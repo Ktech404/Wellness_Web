@@ -3,7 +3,7 @@
     <nav class="navbar">
 
         <div class="nav-brand">
-            The Wellness Hub
+            The Wellness Web
         </div>
 
         <div class="nav-links">

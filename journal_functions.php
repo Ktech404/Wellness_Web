@@ -50,7 +50,7 @@ function moodMessage(): string {
         return 'Very sorry to hear you about how upset you are. If possible, try to talk to a close family member or friend, and practice self-care.';
     }
 
-    return 'Thank you for taking time to reflect today. Head back to the main page to make another reflection, or explore other resouces in the navigation bar!';
+    return 'Writing is a great way to process your feelings, both good and bad. I hope you found this helpful!';
 }
 
 function moodSelected(string $mood): string {
