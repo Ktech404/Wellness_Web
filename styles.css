@@ -342,71 +342,85 @@ button:hover {
 /* ---------- -------------- ---------- */
 /* ---------- -------------- ---------- */
 /* ---------- Self Care ---------- */
-
 .page-title {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.page-desc {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+
+    text-align: center;
+    color: #555;
+    font-size: 1rem;
+
+    font-weight: 300;
+    line-height: 1.8;
+    border-bottom: 1px solid #ccc;
+}
+
+.refresh-btn {
+    display: block;
+    margin: 30px auto 40px;
+    padding: 12px 24px;
+
+    background: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+    font-size: 1rem;
     font-weight: 300;
 
-    margin-bottom: 40px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+
+.refresh-btn:hover {
+    background: #f5f5f5;
+}
+
+.refresh-btn:active {
+    background: #ececec;
 }
 
 .self-care-grid {
-
     display: grid;
-
     grid-template-columns: repeat(2, 1fr);
-
     gap: 30px;
-
 }
 
-
 .care-card {
-
     background: #fff;
-
     border: 1px solid #ccc;
-
     padding: 35px;
 
     min-height: 220px;
-
     border-radius: 8px;
-
     text-align: center;
-
+    overflow-wrap: anywhere;
     animation: slideUp .7s ease;
-
 }
 
-
 .care-card h2 {
-
     font-size: 1.8rem;
-
     font-weight: 300;
-
     padding-bottom: 15px;
 
     margin-bottom: 25px;
-
     border-bottom: 1px solid #ddd;
-
 }
-
 
 .care-card p {
-
     color: #555;
-
     font-size: 1.1rem;
-
     line-height: 1.8;
-
 }
-
-
 
 
 /* ---------- -------------- ---------- */
@@ -415,89 +429,60 @@ button:hover {
 /* ---------- Resources Hero ---------- */
 
 .resource-hero {
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 50px;
 
     margin-bottom: 60px;
-
     padding-bottom: 40px;
-
     border-bottom: 1px solid #ccc;
 
 }
 
-
 .resource-hero-text {
-
     flex: 1;
-
 }
 
 
 .resource-hero-text h1 {
-
     font-size: 3rem;
-
     font-weight: 300;
-
     margin-bottom: 20px;
-
 }
-
 
 .resource-hero-text p {
-
     color: #666;
-
     font-size: 1.2rem;
-
     line-height: 1.8;
-
 }
-
 
 .resource-circle {
-
     width: 250px;
-
     height: 250px;
-
     border-radius: 50%;
 
-    border: 1px solid #222;
-
+    border: 1px solid #444;
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
 }
 
-
 .circle-inner {
-
-    width: 190px;
-
-    height: 190px;
-
+    width: 170px;
+    height: 170px;
     border-radius: 50%;
 
-    border: 1px solid #aaa;
-
+    border: 1px solid #999;
     display: flex;
-
-    align-items: center;
-
     justify-content: center;
+    align-items: center;
+}
 
-    font-size: 3rem;
-
-    font-weight: 300;
+.circle-inner img {
+    width: 90px;
+    height: 90px;
+    object-fit:fill;
 }
 
 /* ---------- Resource Cards ---------- */
@@ -595,7 +580,6 @@ button:hover {
 
 }
 
-
 .breathing-hero h1 {
 
     font-size: 3rem;
@@ -605,7 +589,6 @@ button:hover {
     margin-bottom: 10px;
 
 }
-
 
 .breathing-hero p {
 
@@ -632,73 +615,49 @@ button:hover {
     border-radius:8px;
     padding:30px;
     min-width:0;
-
+    overflow-wrap: anywhere;
 }
 
 
 .breathing-instructions h2,
 .breathing-settings h2 {
-
     font-size:1.6rem;
-
     font-weight:300;
-
     text-align:center;
-
     padding-bottom:15px;
 
     margin-bottom:20px;
-
     border-bottom:1px solid #ddd;
     overflow-wrap: anywhere;
-
 }
 
 /* ---------- Exercise Selector ---------- */
-
 .exercise-selector {
-
     text-align: center;
-
     margin-bottom: 50px;
-
     padding-bottom: 30px;
-
     border-bottom: 1px solid #ccc;
-
 }
 
-
 .exercise-selector h2 {
-
     font-size: 1.6rem;
-
     font-weight: 300;
-
     margin-bottom: 25px;
-
 }
 
 .breathing-instructions li {
-
     margin-bottom:15px;
-
     color:#555;
-
+    overflow-wrap: anywhere;
 }
 
 .breathing-center {
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 }
 
-
 .breathing-circle {
-
     width:min(200px,70vw);
     height:min(200px,70vw);
     border-radius:50%;
@@ -719,13 +678,12 @@ button:hover {
     animation-iteration-count:infinite;
 }
 
+/*Outer ring guide for the circle*/
 .breathing-guide {
-
-    width:250px;
-    height:250px;
+    width:260px;
+    height:260px;
 
     border-radius:50%;
-
     border:6px dotted #171ffc;
 
     display:flex;
@@ -734,20 +692,14 @@ button:hover {
 }
 
 .exercise-buttons {
-
     display:flex;
-
     justify-content:center;
-
     gap:15px;
-
     margin-bottom:35px;
-
 }
 
 
 .exercise-buttons a {
-
     text-decoration:none;
     color:#222;
     background:#eee;
@@ -759,7 +711,6 @@ button:hover {
     transition:
         background .2s ease,
         transform .2s ease;
-
 }
 
 
@@ -813,38 +764,24 @@ button:hover {
     }
 
     .mood-area {
-
         border-right:none;
-
         border-bottom:1px solid #ccc;
-
         padding-right:0;
-
         padding-bottom:30px;
-
     }
 
     .journal-prompt {
-
         padding:30px 0 0;
-
         text-align:center;
-
     }
 
-
     .resource-hero {
-
         flex-direction:column;
-
         text-align:center;
-
     }
 
     .resource-grid {
-
         grid-template-columns:1fr;
-
     }
 
     /* Breathing page */
@@ -868,6 +805,11 @@ button:hover {
         height:220px;
     }
 
+    .breathing-guide{
+        width: 280px;
+        height: 280px;
+    }
+
     .exercise-buttons {
         flex-wrap:wrap;
     }
@@ -887,84 +829,55 @@ button:hover {
 /* ---------- Mobile ---------- */
 @media(max-width:480px) {
     .container {
-
         width:95%;
-
         padding:15px;
-
     }
-
 
     .navbar {
-
         flex-direction:column;
-
         align-items:center;
-
     }
 
-
     .navbar a {
-
         width:100%;
-
         text-align:center;
-
     }
 
     .nav-links {
-
         flex-direction:column;
-
         width:100%;
-
     }
+
     .hero-text h1 {
-
         font-size:2rem;
-
     }
-
 
     .mood-selector {
-
         gap:12px;
-
     }
-
 
     .mood-option img {
-
         width:60px;
-
         height:60px;
-
     }
-
 
     .breathing-circle {
-
         width:180px;
-
         height:180px;
-
     }
 
-
+    .breathing-guide{
+        width: 240;
+        height: 240;
+    }
     .breathing-instructions,
     .breathing-settings {
-
         padding:20px;
-
     }
 
-
     .exercise-buttons a {
-
         width:100%;
-
         text-align:center;
-
     }
 
     .breathing-layout {
@@ -981,5 +894,4 @@ button:hover {
         width:100%;
         min-width:0;
     }
-
 }

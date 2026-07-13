@@ -51,7 +51,18 @@ include './includes/nav.php';
     <h1 class="page-title">
         Self-Care Tips
     </h1>
+    
+    <p class="page-desc">
+        This page provides a random self-care suggestion from four different
+        categories: Body, Mind, Social, and Environment.
+        Click "New Tips" below at any time to generate a fresh set of tips.
+    </p>
 
+    <button
+        class="refresh-btn"
+        onclick="window.location.reload();">
+        New Tips
+    </button>   
 
     <div class="self-care-grid">
 

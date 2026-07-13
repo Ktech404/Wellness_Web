@@ -23,7 +23,7 @@ include './includes/nav.php';
 
     <div class="resource-circle">
         <div class="circle-inner">
-            ?
+            <img src="assets/heart.png" alt = "Hand drawn art of heart">
         </div>
     </div>
 

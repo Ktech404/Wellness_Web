@@ -209,8 +209,6 @@
     </div>
 
 
-
-
     <div class="breathing-settings">
         <h2>
             <?= $exercise["name"]; ?>
@@ -221,7 +219,6 @@
         </p>
 
         <div class="timings">
-
             <p>
                 Inhale: <?= $exercise["inhale"]; ?> seconds
             </p>
@@ -240,8 +237,6 @@
 
         </div>
 
-
     </div>
-
 
 </div>
