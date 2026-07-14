@@ -1,7 +1,9 @@
 <?php
 
+/* Load helper functions used for the journal page */
 require "./journal_functions.php";
 
+/* List of daily reflection prompts */
 $journalPrompts = [
     "What is one thing you learned about yourself today?",
     "What is something small that brought you joy today?",
@@ -15,12 +17,15 @@ $journalPrompts = [
     "What is one positive thing you can say about yourself today?"
 ];
 
+/* Randomly select one prompt each time the page loads */
 $dailyPrompt = $journalPrompts[array_rand($journalPrompts)];
 
+/* Save the journal entry after the form is submitted */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     saveJournalEntry();
 }
 
+/* Clear the current journal session if requested */
 if (isset($_GET['clear'])) {
     $_SESSION = [];
     session_destroy();
@@ -28,18 +33,23 @@ if (isset($_GET['clear'])) {
     header('Location: index.php');
     exit;
 }
+
+/* Include the shared header and navigation */
 include './includes/header.php';
 include './includes/nav.php';
 ?>
 
+<!-- Welcome section -->
 <div class="hero-section">
     <div class="hero-text">
         <h1>Welcome to the Wellness Web!</h1>
-        <p>This is your personal reflection space to:
+
+        <p>
+            This is your personal reflection space to:
             -Record your thoughts and feelings
             -Get self-care tips
             -Practice calming breathing exercises
-            -And explore additional resouces, all in one place!
+            -And explore additional resources, all in one place!
         </p>
     </div>
 
@@ -48,21 +58,26 @@ include './includes/nav.php';
     </div>
 </div>
 
+<!-- Journal entry section -->
 <div class="journal-card">
 
     <h2 class="journal-title">
         Today's Check In:
     </h2>
 
+    <!-- Journal submission form -->
     <form action="journal_processing.php" method="post">
 
         <div class="journal-top">
 
+            <!-- Mood selection -->
             <div class="mood-area">
+
                 <h3>How are you feeling today?</h3>
 
                 <div class="mood-selector">
 
+                    <!-- Users select their current mood -->
                     <label class="mood-option">
 
                         <input
@@ -78,7 +93,7 @@ include './includes/nav.php';
                             alt="very happy"
                         >
 
-                    <span>Very Happy</span>
+                        <span>Very Happy</span>
                     </label>
 
                     <label class="mood-option">
@@ -96,7 +111,7 @@ include './includes/nav.php';
                             alt="Happy"
                         >
 
-                    <span>Happy</span>
+                        <span>Happy</span>
 
                     </label>
 
@@ -148,10 +163,11 @@ include './includes/nav.php';
 
                         <img
                             src="assets/emoji_buttons/distraught.png"
-                            alt="distraught"
+                            alt="Distraught"
                         >
 
-                    <span>Upset</span>
+                        <span>Upset</span>
+
                     </label>
 
                 </div>
@@ -160,15 +176,20 @@ include './includes/nav.php';
 
             </div>
 
+            <!-- Display a random daily reflection prompt -->
             <div class="journal-prompt">
+
                 <h3>Daily Prompt:</h3>
+
                 <p class="prompt">
                     <?= htmlspecialchars($dailyPrompt); ?>
                 </p>
+
             </div>
 
-        </div>  
-    
+        </div>
+
+        <!-- Text area for writing the journal entry -->
         <textarea
             name="journalEntry"
             rows="8"
@@ -177,6 +198,7 @@ include './includes/nav.php';
 
         <br><br>
 
+        <!-- Submit the journal entry -->
         <button type="submit">
             Save Entry
         </button>
@@ -184,4 +206,6 @@ include './includes/nav.php';
     </form>
 
 </div>
+
+<!-- Shared footer -->
 <?php include './includes/footer.php'; ?>

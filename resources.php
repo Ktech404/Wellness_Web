@@ -1,8 +1,11 @@
 <?php
+
+/* Include the shared header and navigation */
 include './includes/header.php';
 include './includes/nav.php';
 ?>
 
+<!-- Resources page introduction -->
 <section class="resource-hero">
 
     <div class="resource-hero-text">
@@ -20,20 +23,19 @@ include './includes/nav.php';
 
     </div>
 
-
+    <!-- Decorative image -->
     <div class="resource-circle">
         <div class="circle-inner">
-            <img src="assets/heart.png" alt = "Hand drawn art of heart">
+            <img src="assets/heart.png" alt="Hand drawn art of heart">
         </div>
     </div>
 
 </section>
 
-
-
+<!-- Mental health resource cards -->
 <section class="resource-grid">
 
-
+    <!-- 988 Lifeline -->
     <div class="resource-card">
 
         <h2>
@@ -51,8 +53,7 @@ include './includes/nav.php';
 
     </div>
 
-
-
+    <!-- National Domestic Violence Hotline -->
     <div class="resource-card">
 
         <h2>
@@ -70,8 +71,7 @@ include './includes/nav.php';
 
     </div>
 
-
-
+    <!-- SAMHSA National Helpline -->
     <div class="resource-card">
 
         <h2>
@@ -89,8 +89,7 @@ include './includes/nav.php';
 
     </div>
 
-
-
+    <!-- Crisis Text Line -->
     <div class="resource-card">
 
         <h2>
@@ -108,9 +107,7 @@ include './includes/nav.php';
 
     </div>
 
-
-
 </section>
 
-
+<!-- Include the shared footer -->
 <?php include './includes/footer.php'; ?>
