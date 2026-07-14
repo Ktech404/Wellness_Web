@@ -213,6 +213,21 @@ http://localhost/project-folder-name/
 
 ---
 
+## Future Improvements
+
+Potential future enhancements include:
+
+* Database-backed journal storage to have access to past entries
+* User accounts and authentication
+* Additional breathing exercises + better support for the animation using JS
+* Expanded wellness resources + dynamic updating
+* Journal search and filtering
+* Accessibility improvements
+* Dark mode support
+* Enhanced mobile navigation
+
+---
+
 ## AI Usage Disclosure
 Note: Code provided by the instructor for classwork/homework assignments were primarily used for inspiration/guidance. 
 
@@ -231,18 +246,3 @@ Artificial intelligence tools were NOT used to:
 * Generate the project structure
 
 All generated suggestions were reviewed, modified, tested, and if applicable, integrated by the team. Final implemention, design decisions, testing, and project integration were completed manually.
-
----
-
-## Future Improvements
-
-Potential future enhancements include:
-
-* Database-backed journal storage to have access to past entries
-* User accounts and authentication
-* Additional breathing exercises + better support for the animation using JS
-* Expanded wellness resources + dynamic updating
-* Journal search and filtering
-* Accessibility improvements
-* Dark mode support
-* Enhanced mobile navigation
