@@ -1,211 +1,242 @@
 <?php
 
-/* Load helper functions used for the journal page */
-require "./journal_functions.php";
+/* Display PHP errors while debugging */
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 
-/* List of daily reflection prompts */
-$journalPrompts = [
-    "What is one thing you learned about yourself today?",
-    "What is something small that brought you joy today?",
-    "What is one challenge you faced recently, and how did you handle it?",
-    "What is something you are grateful for today?",
-    "What is one thing you would like to improve about tomorrow?",
-    "Describe a moment today when you felt calm or peaceful.",
-    "What is something you are proud of yourself for?",
-    "What is one thought that has been on your mind lately?",
-    "What is something you would like to let go of?",
-    "What is one positive thing you can say about yourself today?"
+/* Available breathing exercises and their timings */
+$exercises = [
+    "box" => [
+        "name" => "Box Breathing",
+        "inhale" => 4,
+        "hold_in" => 4,
+        "exhale" => 4,
+        "hold_out" => 4,
+        "description" => "A balanced breathing technique that creates a steady rhythm."
+    ],
+
+    "alternate" => [
+        "name" => "Alternate Nostril Breathing",
+        "inhale" => 4,
+        "hold_in" => 0,
+        "exhale" => 4,
+        "hold_out" => 0,
+        "description" => "A calming practice that alternates breathing between nostrils."
+    ],
+
+    "478" => [
+        "name" => "4-7-8 Breathing",
+        "inhale" => 4,
+        "hold_in" => 7,
+        "exhale" => 8,
+        "hold_out" => 0,
+        "description" => "A slow breathing pattern focused on relaxation."
+    ]
 ];
 
-/* Randomly select one prompt each time the page loads */
-$dailyPrompt = $journalPrompts[array_rand($journalPrompts)];
+/* Get the selected exercise from the URL */
+$exerciseName = $_GET['exercise'] ?? "box";
 
-/* Save the journal entry after the form is submitted */
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    saveJournalEntry();
+/* Build a custom breathing exercise if selected */
+if ($exerciseName === "custom") {
+    $exercise = [
+        "name" => "Custom Breathing",
+        "inhale" => max(1, (int) ($_GET['inhale'] ?? 4)),
+        "hold_in" => max(0, (int) ($_GET['holdin'] ?? 4)),
+        "exhale" => max(1, (int) ($_GET['exhale'] ?? 4)),
+        "hold_out" => max(0, (int) ($_GET['holdout'] ?? 4)),
+        "description" => "Your personalized breathing rhythm."
+    ];
+} else {
+    /* Load the selected preset or use Box Breathing */
+    $exercise = $exercises[$exerciseName] ?? $exercises["box"];
 }
 
-/* Clear the current journal session if requested */
-if (isset($_GET['clear'])) {
-    $_SESSION = [];
-    session_destroy();
+/* Calculate the duration of one complete breathing cycle */
+$totalTime =
+    $exercise["inhale"] +
+    $exercise["hold_in"] +
+    $exercise["exhale"] +
+    $exercise["hold_out"];
 
-    header('Location: index.php');
-    exit;
-}
+$totalTime = max(1, $totalTime);
 
 /* Include the shared header and navigation */
 include './includes/header.php';
 include './includes/nav.php';
+
 ?>
 
-<!-- Welcome section -->
-<div class="hero-section">
-    <div class="hero-text">
-        <h1>Welcome to the Wellness Web!</h1>
+<!-- Breathing page introduction -->
+<section class="breathing-hero">
 
-        <p>
-            This is your personal reflection space to:
-            -Record your thoughts and feelings
-            -Get self-care tips
-            -Practice calming breathing exercises
-            -And explore additional resources, all in one place!
-        </p>
+    <h1>Breathing Exercises</h1>
+
+    <p>
+        Breathe in. Breathe out. You're okay.
+    </p>
+
+</section>
+
+<!-- Exercise selection buttons -->
+<section class="exercise-selector">
+
+    <h2>Choose a breathing exercise</h2>
+
+    <div class="exercise-buttons">
+
+        <a href="?exercise=box">
+            Box Breathing
+        </a>
+
+        <a href="?exercise=alternate">
+            Alternate Nostril
+        </a>
+
+        <a href="?exercise=478">
+            4-7-8 Breathing
+        </a>
+
+        <a href="?exercise=custom">
+            Custom Exercise
+        </a>
+
     </div>
 
-    <div class="hero-image">
-        <img src="assets/welcome_image.png">
+</section>
+
+<!-- Display custom timing controls when selected -->
+<?php if ($exerciseName === "custom"): ?>
+
+    <form class="custom-form" method="get">
+
+        <label>
+            Inhale
+
+            <input
+                type="number"
+                name="inhale"
+                min="1"
+                value="<?= htmlspecialchars((string) $exercise["inhale"]); ?>"
+            >
+        </label>
+
+        <label>
+            Hold Full
+
+            <input
+                type="number"
+                name="holdin"
+                min="0"
+                value="<?= htmlspecialchars((string) $exercise["hold_in"]); ?>"
+            >
+        </label>
+
+        <label>
+            Exhale
+
+            <input
+                type="number"
+                name="exhale"
+                min="1"
+                value="<?= htmlspecialchars((string) $exercise["exhale"]); ?>"
+            >
+        </label>
+
+        <label>
+            Hold Empty
+
+            <input
+                type="number"
+                name="holdout"
+                min="0"
+                value="<?= htmlspecialchars((string) $exercise["hold_out"]); ?>"
+            >
+        </label>
+
+        <button type="submit">
+            Start Custom Exercise
+        </button>
+
+        <input type="hidden" name="exercise" value="custom">
+
+    </form>
+
+<?php endif; ?>
+
+<!-- Breathing exercise layout -->
+<div class="breathing-layout">
+
+    <!-- Exercise instructions -->
+    <div class="breathing-instructions">
+
+        <h2>How It Works</h2>
+
+        <ul>
+            <li>Match your breathing with the rhythm of the circle.</li>
+            <li>Find a comfortable position.</li>
+            <li>Relax your shoulders and jaw.</li>
+            <li>Close your eyes if you feel comfortable.</li>
+            <li>Take slow, relaxed breaths.</li>
+        </ul>
+
     </div>
-</div>
 
-<!-- Journal entry section -->
-<div class="journal-card">
+    <!-- Animated breathing circle -->
+    <div class="breathing-center">
 
-    <h2 class="journal-title">
-        Today's Check In:
-    </h2>
+        <div class="breathing-guide">
 
-    <!-- Journal submission form -->
-    <form action="journal_processing.php" method="post">
-
-        <div class="journal-top">
-
-            <!-- Mood selection -->
-            <div class="mood-area">
-
-                <h3>How are you feeling today?</h3>
-
-                <div class="mood-selector">
-
-                    <!-- Users select their current mood -->
-                    <label class="mood-option">
-
-                        <input
-                            type="radio"
-                            name="mood"
-                            value="very happy"
-                            required
-                            <?= moodSelected('very happy'); ?>
-                        >
-
-                        <img
-                            src="assets/emoji_buttons/happy.png"
-                            alt="very happy"
-                        >
-
-                        <span>Very Happy</span>
-                    </label>
-
-                    <label class="mood-option">
-
-                        <input
-                            type="radio"
-                            name="mood"
-                            value="happy"
-                            required
-                            <?= moodSelected('happy'); ?>
-                        >
-
-                        <img
-                            src="assets/emoji_buttons/content.png"
-                            alt="Happy"
-                        >
-
-                        <span>Happy</span>
-
-                    </label>
-
-                    <label class="mood-option">
-
-                        <input
-                            type="radio"
-                            name="mood"
-                            value="neutral"
-                            <?= moodSelected('neutral'); ?>
-                        >
-
-                        <img
-                            src="assets/emoji_buttons/neutral.png"
-                            alt="Neutral"
-                        >
-
-                        <span>Neutral</span>
-
-                    </label>
-
-                    <label class="mood-option">
-
-                        <input
-                            type="radio"
-                            name="mood"
-                            value="sad"
-                            <?= moodSelected('sad'); ?>
-                        >
-
-                        <img
-                            src="assets/emoji_buttons/sad.png"
-                            alt="Sad"
-                        >
-
-                        <span>Sad</span>
-
-                    </label>
-
-                    <label class="mood-option">
-
-                        <input
-                            type="radio"
-                            name="mood"
-                            value="distraught"
-                            required
-                            <?= moodSelected('distraught'); ?>
-                        >
-
-                        <img
-                            src="assets/emoji_buttons/distraught.png"
-                            alt="Distraught"
-                        >
-
-                        <span>Upset</span>
-
-                    </label>
-
-                </div>
-
-                <br>
-
-            </div>
-
-            <!-- Display a random daily reflection prompt -->
-            <div class="journal-prompt">
-
-                <h3>Daily Prompt:</h3>
-
-                <p class="prompt">
-                    <?= htmlspecialchars($dailyPrompt); ?>
-                </p>
-
+            <div
+                class="breathing-circle"
+                style="animation-duration: <?= (int) $totalTime; ?>s;"
+            >
+                <span>Breathe</span>
             </div>
 
         </div>
 
-        <!-- Text area for writing the journal entry -->
-        <textarea
-            name="journalEntry"
-            rows="8"
-            placeholder="Write about your day..."
-        ><?= htmlspecialchars(sessionValue('journalEntry')); ?></textarea>
+    </div>
 
-        <br><br>
+    <!-- Selected exercise details -->
+    <div class="breathing-settings">
 
-        <!-- Submit the journal entry -->
-        <button type="submit">
-            Save Entry
-        </button>
+        <h2>
+            <?= htmlspecialchars($exercise["name"]); ?>
+        </h2>
 
-    </form>
+        <p>
+            <?= htmlspecialchars($exercise["description"]); ?>
+        </p>
+
+        <div class="timings">
+
+            <p>
+                Inhale:
+                <?= (int) $exercise["inhale"]; ?> seconds
+            </p>
+
+            <p>
+                Hold Full:
+                <?= (int) $exercise["hold_in"]; ?> seconds
+            </p>
+
+            <p>
+                Exhale:
+                <?= (int) $exercise["exhale"]; ?> seconds
+            </p>
+
+            <p>
+                Hold Empty:
+                <?= (int) $exercise["hold_out"]; ?> seconds
+            </p>
+
+        </div>
+
+    </div>
 
 </div>
 
-<!-- Shared footer -->
+<!-- Include the shared footer -->
 <?php include './includes/footer.php'; ?>
