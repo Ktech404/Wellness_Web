@@ -14,16 +14,16 @@ Each of the provided test cases and actual results are simply ONE demonstrated e
 
 | Test ID | Test Description                        | Expected Result                                                                                        | Actual Result Screenshot       |
 | ------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------ |
-| TC-01   | Welcome page hero image scaling         | Hero image scales proportionally without distortion at smaller breakpoints.      | `tc01-hero-image-scaling.png`  |
-| TC-02   | Mobile breakpoint journal layout                | Textarea and content stack appropriately on smaller screens without overlap or horizontal scrolling. | `tc02-mobile-layout.png`       |
-| TC-03   | Tablet breakpoint resources layout                | Content reorganizes correctly at tablet widths while maintaining readability and spacing.              | `tc03-tablet-layout.png`       |
-| TC-04   | Desktop breakpoint layout               | Full desktop layout displays correctly with proper spacing and alignment.                              | `tc04-desktop-layout.png`      |
-| TC-05   | Navigation button hover state           | Buttons provide clear visual feedback when hovered, such as color, shadow, or animation changes.       | `tc05-button-hover.png`        |
-| TC-06   | Self-care tips button click behavior        | Clicking buttons highlights the completed tip and drives progress bar state.                        | `tc06-self-care-tips.png`        |
-| TC-07   | Missing image accessibility check       | If an image fails to load, descriptive alt text is available and meaningful to users.                  | `tc07-alt-text.png`            |
-| TC-08   | Session-dependent journal saving and feedback.                     | User's journal entry and mood state is accurately saved and echoed back along with custom feeback.   | `tc08-journal-confirmation.png` |
-| TC-09   | Textarea placeholder text | Journal textarea has placeholder text to explain purpose of field and/or invite user to reflect on their day.     | `tc09-placeholder-textarea.png`   |
-| TC-10   | Custom exercise form validation  | Fields display appropriate feedback when an invalid breathing interval is entered.                   | `tc10-form-validation.png`     |
+| TC-01   | Welcome page hero image scaling         | Hero image scales proportionally without distortion at smaller breakpoints.      | ![](images/tc01-hero-image-scaling.png)  |
+| TC-02   | Mobile breakpoint journal layout                | Textarea and content stack appropriately on smaller screens without overlap or horizontal scrolling. | ![](images/tc02-mobile-layout.png)       |
+| TC-03   | Tablet breakpoint resources layout                | Content reorganizes correctly at tablet widths while maintaining readability and spacing.              | ![](images/tc03-tablet-layout.png)       |
+| TC-04   | Desktop breakpoint layout               | Full desktop layout displays correctly with proper spacing and alignment.                              | ![](images/tc04-desktop-layout.png)      |
+| TC-05   | Navigation button hover state           | Buttons provide clear visual feedback when hovered, such as color, shadow, or animation changes.       | ![](images/tc05-button-hover.png)        |
+| TC-06   | Self-care tips button click behavior        | Clicking buttons highlights the completed tip and drives progress bar state.                        | ![](images/tc06-self-care-tips.png)        |
+| TC-07   | Missing image accessibility check       | If an image fails to load, descriptive alt text is available and meaningful to users.                  | ![](images/tc07-alt-text.png)            |
+| TC-08   | Session-dependent journal saving and feedback.                     | User's journal entry and mood state is accurately saved and echoed back along with custom feeback.   | ![](images/tc08-journal-confirmation.png) |
+| TC-09   | Textarea placeholder text | Journal textarea has placeholder text to explain purpose of field and/or invite user to reflect on their day.     | ![](images/tc09-placeholder-textarea.png)   |
+| TC-10   | Custom exercise form validation  | Fields display appropriate feedback when an invalid breathing interval is entered.                   | ![](images/tc10-form-validation.png)     |
 
 ---
 
