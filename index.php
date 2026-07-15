@@ -21,13 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     saveJournalEntry();
 }
 
-if (isset($_GET['clear'])) {
-    $_SESSION = [];
-    session_destroy();
-
-    header('Location: index.php');
-    exit;
-}
 include './includes/header.php';
 include './includes/nav.php';
 ?>
@@ -44,7 +37,7 @@ include './includes/nav.php';
     </div>
 
     <div class="hero-image">
-        <img src="assets/welcome_image.png">
+        <img src="assets/welcome_image.png" alt="Line art drawing of a sunrise over a lake.">
     </div>
 </div>
 

@@ -30,12 +30,16 @@ No external frameworks or libraries were used. The site was built using standard
 ├── includes/
 │   └── reusable PHP components(header, nav, footer)
 │
+├── QA + Testing/
+│   ├── images/
+│   └── QA_notes.md
+│
 ├── index.php
 ├── breathing.php
 ├── self-care.php
 ├── resources.php
 ├── journal_functions.php
-├── processing.php
+├── journal_processing.php
 ├── styles.css
 └── README.md
 ```
@@ -49,6 +53,10 @@ Contains images, icons, and other media used throughout the website.
 #### includes/
 
 Contains reusable header, nav, and footer PHP components and shared content that can be included across multiple pages.
+
+#### QA + Testing/
+
+Contains a file explaining the steps taken to assure quality assurance, as well as test cases with expected behavior and  actual image results of testing, also in the directory.
 
 #### styles.css
 
